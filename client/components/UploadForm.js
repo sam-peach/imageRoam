@@ -29,6 +29,8 @@ class UploadFrom extends React.Component {
       data: formData,
       config: {headers: {'Content-Type': "'multipart/form-data'"}}
     })
+    console.log('DATA>>> ', data)
+    this.setState({imageFile: data})
   }
 
   render() {

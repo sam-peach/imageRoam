@@ -3,9 +3,18 @@ const Jimp = require('jimp')
 module.exports = router
 
 router.post('/', (req, res, next) => {
-  const {imageFile} = req.body
+  const imageFile = req.files
   try {
-    console.log('REQ BODY>>> ', Object.values(req.files))
+    Jimp.read(imageFile[0].path)
+      .then(image => {
+        image
+          .resize(100, 100)
+          .getBase64(image.getMIME(), (err, processedImage) => {
+            if (err) throw err
+            res.send(processedImage)
+          })
+      })
+      .catch(err => console.error(err))
   } catch (err) {
     next(err)
   }
