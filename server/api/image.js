@@ -1,6 +1,4 @@
 const router = require('express').Router()
-const fs = require('fs')
-const {Readable} = require('stream')
 const Jimp = require('jimp')
 module.exports = router
 
