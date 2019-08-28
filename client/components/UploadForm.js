@@ -7,7 +7,8 @@ class UploadFrom extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      imageFile: null
+      imageFile: null,
+      processed: false
     }
   }
 
@@ -45,7 +46,7 @@ class UploadFrom extends React.Component {
           />
           <Button type="submit" value="Submit" />
         </form>
-        <img src={this.state.imageFile} />
+        {this.state.processed ? <Canvas /> : <img src={this.state.imageFile} />}
       </div>
     )
   }
